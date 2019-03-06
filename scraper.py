@@ -11,13 +11,13 @@ csv_file = open('wood_working_plans.csv', 'w')
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['Project', 'Plans'])
 
-for columns in soup.find_all('ul'):
+for columns in soup.find_all('ul')[2:-1:]:
     project = columns.li.a.text
     pdf_links = columns.li.a.get('href')
 
     print(project)
     print(pdf_links)
 
-    csv_writer.writerow([project, pdf_links])
+    # csv_writer.writerow([project, pdf_links])
 
 csv_file.close()
