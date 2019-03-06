@@ -9,15 +9,15 @@ soup = BeautifulSoup(html, 'lxml')
 csv_file = open('wood_working_plans.csv', 'w')
 
 csv_writer = csv.writer(csv_file)
-csv_writer.writerow(['Project', 'Plans'])
+csv_writer.writerow(['PROJECTS', 'PLANS'])
 
 for columns in soup.find_all('ul')[2:-1:]:
-    project = columns.li.a.text
-    pdf_links = columns.li.a.get('href')
+    projects = columns.li.a.text
+    plans = columns.li.a.get('href')
 
-    print(project)
-    print(pdf_links)
+    print(projects)
+    print(plans)
 
-    # csv_writer.writerow([project, pdf_links])
+    csv_writer.writerow([projects, plans])
 
 csv_file.close()
